@@ -1,0 +1,4 @@
+^LICENSE\.md$
+^addonbs5.Rproj
+^.*\.Rproj$
+^\.Rproj\.user$
