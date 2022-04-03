@@ -12,38 +12,58 @@ library(addonbs5)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-    theme = bslib::bs_theme(version = 5,bootswatch = "darkly"),
-    
-    add_oc(
-        id = "id_oc",
-        header = TRUE,
-        title = "Title !",
-        body ="Body !",
-        position = "end",
-        class_header = "bg-primary",
-        class_body = "bg-light",
-        class_btn = "btn-success",
-        class_oc ="border border-primary",
-        scroll = TRUE,
-        backdrop = TRUE,
-        close_btn = TRUE
+    theme = bslib::bs_theme(version = 5,bootswatch = "flatly"),
+    br(),
+    # action button to trigger oc
+    actionButton_oc(
+    inputId = "ok",
+    label = "Off canvas button", 
+    id_oc = "id_oc",
+    class="btn-primary"
     ),
-    
-    HTML('<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#id_oc" role="button" aria-controls="offcanvasExample">
-  Link with href
-</a>
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#id_oc" aria-controls="offcanvasExample">
-  Button with data-bs-target
-</button>')
-    
+    # action link to trigger oc
+    actionLink_oc(
+      inputId = "ok",
+      label = "Off canvas link", 
+      id_oc = "id_oc",
+      class="text-primary"
+    ),
+    br(),
+    # oc definition
+    add_oc(
+      id = "id_oc",
+      header = TRUE,
+      title = "Title !",
+      body ="Body !",
+      position = "end",
+      class_header = "bg-primary",
+      class_body = "bg-light",
+      class_btn = "btn-success",
+      class_oc ="border border-primary",
+      scroll = TRUE,
+      backdrop = TRUE,
+      close_btn = TRUE
+    ),
+    br(),
+    # action button with badge
+    actionButton_badge(label="Test",
+                       inputId="tid_ocest",
+                       badge_text = "5+",
+                       badge_color = "success",
+                       class="btn-primary",
+                       corner = FALSE,
+                       badge_pill = TRUE),
+    actionButton_badge(label="Test",
+                       inputId="tid_ocest",
+                       badge_text = "5+",
+                       badge_color = "danger",
+                       class="btn-primary",
+                       corner = TRUE,
+                       badge_pill = TRUE)
 )
 
 # Define server logic required to draw a histogram
-server <- function(input, output) {
-
-    
-    
-}
+server <- function(input, output) {}
 
 # Run the application 
 shinyApp(ui = ui, server = server)

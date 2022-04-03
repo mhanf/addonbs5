@@ -19,13 +19,19 @@
 #'
 #' @examples
 #' add_oc(
-#' id  = "id",
-#' title = "My off canvas title",
-#' body = "My off canvas body",
-#' position = "start",
+#' id = "id_oc",
+#' header = TRUE,
+#' title = "Title !",
+#' body ="Body !",
+#' position = "end",
+#' class_header = "bg-primary",
+#' class_body = "bg-light",
+#' class_btn = "btn-success",
+#' class_oc ="border border-primary",
 #' scroll = TRUE,
 #' backdrop = TRUE,
-#' close_btn = TRUE)
+#' close_btn = TRUE
+#' )
 
 add_oc <- function(id = NULL,
                    body = NULL,
@@ -63,7 +69,6 @@ add_oc <- function(id = NULL,
   if (is.logical(backdrop) == FALSE) {
     stop("backdrop must be logical")
   }
-  
   # header definition
   tag_header <- NULL
   if (header == TRUE) {
@@ -83,7 +88,6 @@ add_oc <- function(id = NULL,
       tag_button
     )
   }
-  
   # off canvas
   tag <- div(
     class = paste0("offcanvas offcanvas-", position, " ", class_oc),
@@ -95,6 +99,6 @@ add_oc <- function(id = NULL,
     tag_header,
     div(class = paste("offcanvas-body", class_body), body)
   )
-  
+  # return
   return(tag)
 }
