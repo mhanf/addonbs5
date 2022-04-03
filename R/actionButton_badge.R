@@ -24,32 +24,15 @@
 
 actionButton_badge <- function(label,
                                class = NULL,
-                               badge_text,
-                               badge_class = NULL,
                                badge_color = "primary",
+                               badge_text = NULL,
+                               badge_class = NULL,
                                badge_pill = FALSE,
                                corner = FALSE,
                                ...) {
-  # test badge_pill
-  if (is.logical(badge_pill) == FALSE) {
-    stop("badge_pill must be logical")
-  }
   # test corner
   if (is.logical(corner) == FALSE) {
     stop("corner must be logical")
-  }
-  # test badge_color
-  test_bs_color(
-    badge_color,
-    transparent = FALSE,
-    default = TRUE,
-    label = "badge_color"
-  )
-  # default badge class
-  badge_class <- paste0("badge bg-", badge_color)
-  # pill badge
-  if (isTRUE(badge_pill)) {
-    badge_class <- paste(badge_class, "rounded-pill")
   }
   # corner badge
   if (isTRUE(corner)) {
@@ -57,9 +40,15 @@ actionButton_badge <- function(label,
     badge_class <- paste(badge_class,
                          "position-absolute top-0 start-100 translate-middle")
   }
+  # badge creation
+  badge <- add_badge(badge_text = badge_text,
+                     badge_color = badge_color,
+                     badge_class = badge_class,
+                     badge_pill = badge_pill
+                     )
+  
   # final label button
-  label <- shiny::tagList(label,
-                          tags$span(class = badge_class, badge_text))
+  label <- shiny::tagList(label, badge)
   # final button
   button <- shiny::actionButton(label = label,
                                 class = class,

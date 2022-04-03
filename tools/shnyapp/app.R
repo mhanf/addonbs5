@@ -13,7 +13,28 @@ library(addonbs5)
 # Define UI for application that draws a histogram
 ui <- fluidPage(
     theme = bslib::bs_theme(version = 5,bootswatch = "flatly"),
+    # masonry js load
+    # shiny::tagList(
+    #   shiny::singleton(
+    #     shiny::tags$head(
+    #       shiny::tags$script(
+    #         src="addonbs5-assets/masonry.pkgd.min.js"
+    #       )
+    #     )
+    #   )),
     br(),
+    add_badge(badge_color ="primary",
+              badge_text = "text",
+              badge_class = NULL,
+              badge_pill = FALSE),
+    add_badge(badge_color ="secondary",
+              badge_text = "text",
+              badge_class = NULL,
+              badge_pill = TRUE),
+    add_badge(badge_color ="transparent",
+              badge_text = "25+",
+              badge_class = "border border-danger text-danger",
+              badge_pill = TRUE),
     # action button to trigger oc
     actionButton_oc(
     inputId = "ok",

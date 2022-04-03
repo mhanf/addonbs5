@@ -7,9 +7,9 @@
 actionButton_badge(
   label,
   class = NULL,
-  badge_text,
-  badge_class = NULL,
   badge_color = "primary",
+  badge_text = NULL,
+  badge_class = NULL,
   badge_pill = FALSE,
   corner = FALSE,
   ...
@@ -20,11 +20,11 @@ actionButton_badge(
 
 \item{class}{class parameter of the actionButton}
 
+\item{badge_color}{Color of the badge}
+
 \item{badge_text}{Text of the badge}
 
 \item{badge_class}{Additional HTML class for the button}
-
-\item{badge_color}{Color of the badge}
 
 \item{badge_pill}{pill badge ? (TRUE or FALSE)}
 

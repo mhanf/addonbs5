@@ -3,6 +3,7 @@
 export(actionButton_badge)
 export(actionButton_oc)
 export(actionLink_oc)
+export(add_badge)
 export(add_oc)
 export(test_bs_color)
 import(htmltools)
