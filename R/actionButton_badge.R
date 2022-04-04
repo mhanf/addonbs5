@@ -36,7 +36,7 @@ actionButton_badge <- function(label,
   }
   # corner badge
   if (isTRUE(corner)) {
-    class <- paste(class, "position-relative")
+    class <- paste(class, "position-relative me-2")
     badge_class <- paste(badge_class,
                          "position-absolute top-0 start-100 translate-middle")
   }
