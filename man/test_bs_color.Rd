@@ -4,7 +4,13 @@
 \alias{test_bs_color}
 \title{Test the bootstrap validity of a color}
 \usage{
-test_bs_color(color, transparent = TRUE, default = FALSE, label = "Color")
+test_bs_color(
+  color,
+  transparent = TRUE,
+  default = FALSE,
+  bw = TRUE,
+  label = "Color"
+)
 }
 \arguments{
 \item{color}{color to test}
@@ -12,6 +18,8 @@ test_bs_color(color, transparent = TRUE, default = FALSE, label = "Color")
 \item{transparent}{Is transparent color authorized ?}
 
 \item{default}{Is default color authorized ?}
+
+\item{bw}{Is black ans white authorized ?}
 
 \item{label}{label for the error message}
 }

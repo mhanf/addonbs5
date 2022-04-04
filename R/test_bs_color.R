@@ -3,13 +3,16 @@
 #' @param color color to test
 #' @param transparent Is transparent color authorized ?
 #' @param default Is default color authorized ?
+#' @param bw  Is black ans white authorized ?
 #' @param label label for the error message
+#'
 #' @return A error message if the color is invalid
 #' @export
 
 test_bs_color <- function(color,
                           transparent = TRUE,
                           default = FALSE,
+                          bw = TRUE,
                           label ="Color"
 ){
   # test transparent
@@ -28,13 +31,12 @@ test_bs_color <- function(color,
                 "info",
                 "success",
                 "warning",
-                "danger",
-                "white",
-                "black"
+                "danger"
   )
   # optional add of transparent and default color
   if (default == TRUE){ bs_color = c("default", bs_color) }
   if (transparent == TRUE){ bs_color = c(bs_color,"transparent") }
+  if (bw == TRUE){ bs_color = c(bs_color,"black","white") }
   # message compilation
   message <- paste0(label, " must be either ", paste(bs_color, collapse = ", "))
   # stop if color is incorrect

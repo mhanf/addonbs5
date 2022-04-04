@@ -27,6 +27,7 @@ add_badge <- function(badge_color = "default",
   # test badge_color
   test_bs_color(
     badge_color,
+    bw = TRUE,
     transparent = TRUE,
     default = TRUE,
     label = "badge_color"
