@@ -19,7 +19,7 @@ add_tooltip <- function(tag = NULL,
                         tooltip_color = "default") {
   
   
-  popover_dep <- htmltools::htmlDependency(
+  tooltip_dep <- htmltools::htmlDependency(
     name = "tooltip",
     version = "1.0.0",
     src = "assets",
@@ -45,12 +45,10 @@ add_tooltip <- function(tag = NULL,
   }
   # tooltip_color
   test_bs_color(tooltip_color, transparent = FALSE, default = TRUE, bw = FALSE,label = "tooltip_color")
-
   # class definition
   class_tooltip <- paste0("popover")
   class_arrow <- paste0("popover-arrow popover-arrow-",tooltip_color)
   class_inner <- paste0("tooltip-inner ","tooltip-inner-",tooltip_color)
-  
   # template definition
   template_tooltip <- shiny::div(
     class = class_tooltip,
@@ -58,10 +56,7 @@ add_tooltip <- function(tag = NULL,
     shiny::div(class = class_arrow),
     shiny::div(class = class_inner, tooltip_msg)
   )
-  
-  #template_tooltip <- '<div class="popover"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div><div class="popover-footer"><a class="btn btn-secondary btn-sm close">Close</a></div></div>'
-  
-  # popover definition
+  # tooltip definition
   tooltip <- htmltools::tagQuery(tag)$
     addAttrs("data-bs-toggle" = "popover")$
     addAttrs('data-bs-placement' = tooltip_position)$
@@ -70,9 +65,8 @@ add_tooltip <- function(tag = NULL,
     addAttrs('tabindex' = "0")$
     addAttrs("data-bs-content" = " ")$
     addAttrs("data-bs-template" = template_tooltip)$allTags()
-  
-  tooltip <- tagList(popover_dep, tooltip)
-  
+  # attach dependency
+  tooltip <- tagList(tooltip_dep, tooltip)
   # return
   return(tooltip)
 }
