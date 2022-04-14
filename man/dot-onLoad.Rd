@@ -12,7 +12,7 @@
 \item{pkgname}{pkgname}
 }
 \value{
-
+load package dependencies
 }
 \description{
 load package dependencies

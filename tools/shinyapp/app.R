@@ -19,39 +19,46 @@ color <-
     "success",
     "warning",
     "danger")
-color1 <-
-  c(
-    "default",
-    "primary",
-    "secondary",
-    "light",
-    "dark",
-    "info",
-    "success",
-    "warning",
-    "danger"
-  )
-color2 <-
-  c(
-    "default",
-    "primary",
-    "secondary",
-    "light",
-    "dark",
-    "info",
-    "success",
-    "warning",
-    "danger",
-    "black",
-    "white"
-  )
-
+color1 <- c("default", color)
+color2 <- c(color1, "black", "white")
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   theme = bslib::bs_theme(version = 5, bootswatch = "flatly"),
-  use_addonbs5(),
   br(),
+  
+  HTML(' <div class="container mt-5">
+
+      <!-- button to initialize toast -->
+      <button type="button" class="btn btn-primary" id="toastbtn">Initialize toast</button>
+
+      <!-- Toast -->
+      <div class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>
+
+
+    <!-- Popper.js first, then Bootstrap JS -->
+    <script>
+      document.getElementById("toastbtn").onclick = function() {
+        var toastElList = [].slice.call(document.querySelectorAll(".toast"))
+        var toastList = toastElList.map(function(toastEl) {
+        // Creates an array of toasts (it only initializes them)
+          return new bootstrap.Toast(toastEl) // No need for options; use the default options
+        });
+       toastList.forEach(toast => toast.show()); // This show them
+   
+        console.log(toastList); // Testing to see if it works
+      };
+
+    </script>'),
+  
+  
   h3("Badge"),
   h4('Color'),
   lapply(color2,
@@ -74,13 +81,32 @@ ui <- fluidPage(
            )
          }),
   h4('Personnalized badges'),
-  lapply(color2,
+  lapply(color1,
          function(j) {
            add_badge(
              badge_color = "transparent",
              badge_text = j,
              badge_class = paste0("border border-", j, " text-", j),
              badge_pill = TRUE
+           )
+         }),
+  h3('Buttons'),
+  h4('Circular buttons'),
+  lapply(color1,
+         function(j) {
+           actionButton_circle(
+             inputId = "ok",
+             icon = shiny::icon("tree"),
+             class=paste0("btn-",j)
+           )
+         }),
+  h4('Personalized circular buttons'),
+  lapply(color1,
+         function(j) {
+           actionButton_circle(
+             inputId = "ok",
+             icon = shiny::icon("cog"),
+             class=paste0("btn-outline-",j)
            )
          }),
   h4('Badged button 1'),
@@ -91,7 +117,6 @@ ui <- fluidPage(
              inputId = "j",
              badge_text = "4+",
              badge_color = j,
-             class = "btn-primary",
              corner = FALSE,
              badge_pill = TRUE
            )
@@ -104,7 +129,7 @@ ui <- fluidPage(
              inputId = "j",
              badge_text = "4+",
              badge_color = j,
-             class = "btn-primary",
+             class = "me-3",
              corner = TRUE,
              badge_pill = TRUE
            )
@@ -122,7 +147,7 @@ ui <- fluidPage(
     inputId = "ok",
     label = "Off canvas link",
     id_oc = "id_oc",
-    class = "text-primary text-decoration-none"
+    class = "text-primary"
   ),
   br(),
   # oc definition
@@ -149,7 +174,7 @@ ui <- fluidPage(
   ),
   add_tooltip(
     tag = actionButton("tooltip", "bottom"),
-    tooltip_msg = "Message",
+    tooltip_msg = "Message des plus interessant à lire attentivement!",
     tooltip_position = "bottom"
   ),
   add_tooltip(
@@ -173,10 +198,10 @@ ui <- fluidPage(
            )
          }),
   h4("Trigger"),
-  add_tooltip(
+  add_popover(
     tag = actionButton("tooltip", "hover"),
-    tooltip_msg = "message",
-    tooltip_trigger = "hover"
+    popover_msg = "message",
+    popover_title = "prout"
   ),
   add_tooltip(
     tag = actionButton("tooltip", "focus"),
@@ -189,7 +214,7 @@ ui <- fluidPage(
   add_tooltip(
     tag = actionButton("tooltip", "HTML"),
     tooltip_color = "primary",
-    tooltip_msg = tagList(tags$b("HTML", class = "text-danger"), div("message"))
+    tooltip_msg = tagList(tags$b("HTML", class = "text-success"), div("message"))
   )
 )
 

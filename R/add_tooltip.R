@@ -17,6 +17,16 @@ add_tooltip <- function(tag = NULL,
                         tooltip_trigger = "hover focus",
                         tooltip_msg = NULL,
                         tooltip_color = "default") {
+  
+  
+  popover_dep <- htmltools::htmlDependency(
+    name = "tooltip",
+    version = "1.0.0",
+    src = "assets",
+    script = "tooltip.js",
+    stylesheet =  c(file = "tooltip.css"),
+    package = "addonbs5" # user package
+  )
   # tag
   if (is.null(tag) == TRUE) {
     stop("tag must not be NULL")
@@ -35,18 +45,12 @@ add_tooltip <- function(tag = NULL,
   }
   # tooltip_color
   test_bs_color(tooltip_color, transparent = FALSE, default = TRUE, bw = FALSE,label = "tooltip_color")
+
   # class definition
-  if (tooltip_color == "default"){ class_tooltip <-paste0("popover bg-black") }
-  else {class_tooltip <-paste0("popover bg-", tooltip_color, " border border-", tooltip_color)}
+  class_tooltip <- paste0("popover")
+  class_arrow <- paste0("popover-arrow popover-arrow-",tooltip_color)
+  class_inner <- paste0("tooltip-inner ","tooltip-inner-",tooltip_color)
   
-  if (tooltip_position == "top" | tooltip_position == "bottom"){
-    class_arrow <- paste0("popover-arrow ", tooltip_color, "-v-popover")
-  } 
-  else{
-    class_arrow <- paste0("popover-arrow ", tooltip_color, "-h-popover")  
-  }
-  if (tooltip_color == "default"){class_inner <- "tooltip-inner bg-black"}
-  else {class_inner <- paste0("tooltip-inner bg-", tooltip_color)}
   # template definition
   template_tooltip <- shiny::div(
     class = class_tooltip,
@@ -54,6 +58,9 @@ add_tooltip <- function(tag = NULL,
     shiny::div(class = class_arrow),
     shiny::div(class = class_inner, tooltip_msg)
   )
+  
+  #template_tooltip <- '<div class="popover"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div><div class="popover-footer"><a class="btn btn-secondary btn-sm close">Close</a></div></div>'
+  
   # popover definition
   tooltip <- htmltools::tagQuery(tag)$
     addAttrs("data-bs-toggle" = "popover")$
@@ -63,6 +70,9 @@ add_tooltip <- function(tag = NULL,
     addAttrs('tabindex' = "0")$
     addAttrs("data-bs-content" = " ")$
     addAttrs("data-bs-template" = template_tooltip)$allTags()
+  
+  tooltip <- tagList(popover_dep, tooltip)
+  
   # return
   return(tooltip)
 }

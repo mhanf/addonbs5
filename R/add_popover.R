@@ -22,7 +22,6 @@ add_popover <- function(tag = NULL,
     stop("popover_msg must not be NULL")
   }
   
-  
   template_popover <-div(class="popover",role="tooltip",
       div(class="popover-arrow"),
       h3(class="popover-header mt-0"),
@@ -33,7 +32,7 @@ add_popover <- function(tag = NULL,
   
   template <- '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   
-  template_tooltip <- div(class="popover bg-danger border border-danger", role="tooltip",
+  template_tooltip <- div(class="popover bg-danger border border-danger p-0", role="tooltip",
                           div(class = "popover-arrow danger-v-popover"),
                           div(class = "tooltip-inner bg-danger","essai")
   )
@@ -46,7 +45,7 @@ add_popover <- function(tag = NULL,
     addAttrs('role' = "button")$
     addAttrs('tabindex' = "0")$
     addAttrs("data-bs-content" = popover_msg)$
-    addAttrs("data-bs-template" = template_tooltip)$
+    addAttrs("data-bs-template" = template_popover)$
     allTags()
   # pophover title
   if (is.na(popover_title) == FALSE) {

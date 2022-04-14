@@ -1,3 +1,53 @@
+.global-tooltip {
+    border: 0px solid transparent !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+}
+
+.tooltip-inner-default {
+    background-color: black !important;
+    opacity: 1 !important;
+}
+
+.tooltip-inner-primary {
+    background-color: var(--bs-primary) !important;
+    opacity: 1 !important;
+}
+
+.tooltip-inner-secondary {
+    background-color: var(--bs-secondary) !important;
+    opacity: 1 !important;
+}
+
+.tooltip-inner-light {
+    background-color: var(--bs-light) !important;
+    opacity: 1 !important;
+}
+
+.tooltip-inner-dark {
+    background-color: var(--bs-dark) !important;
+    opacity: 1 !important;
+}
+
+.tooltip-inner-success {
+    background-color: var(--bs-success) !important;
+    opacity: 1 !important;
+}
+
+.tooltip-inner-warning {
+    background-color: var(--bs-warning) !important;
+    opacity: 1 !important;
+}
+
+.tooltip-inner-danger {
+    background-color: var(--bs-danger) !important;
+    opacity: 1 !important;
+}
+
+.tooltip-inner-info {
+    background-color: var(--bs-info) !important;
+    opacity: 1 !important;
+}
 
 .primary-h-popover::before, .primary-h-popover::after {
     border-left-color: var(--bs-primary) !important;
@@ -27,6 +77,7 @@
 .info-v-popover::before, .info-v-popover::after {
     border-top-color: var(--bs-info) !important;
     border-bottom-color: var(--bs-info) !important;
+    
 }
 
 .danger-h-popover::before, .danger-h-popover::after {
@@ -88,4 +139,3 @@
     border-top-color: black !important;
     border-bottom-color: black !important;
 }
-

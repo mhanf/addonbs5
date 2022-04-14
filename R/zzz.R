@@ -2,8 +2,8 @@
 #'
 #' @param libname libname
 #' @param pkgname pkgname
-#'
-#' @return
+#' @importFrom shiny addResourcePath
+#' @return load package dependencies
 #' @export
 #'
 
