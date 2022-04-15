@@ -169,52 +169,51 @@ ui <- fluidPage(
   h4("Position"),
   add_tooltip(
     tag = actionButton("tooltip", "top"),
-    tooltip_msg = "Message",
-    tooltip_position = "top"
+    text = "Message",
+    position = "top"
   ),
   add_tooltip(
     tag = actionButton("tooltip", "bottom"),
-    tooltip_msg = "Message des plus interessant à lire attentivement!",
-    tooltip_position = "bottom"
+    text = "Message des plus interessant à lire attentivement!",
+    position = "bottom"
   ),
   add_tooltip(
     tag = actionButton("tooltip", "left"),
-    tooltip_msg = "Message",
-    tooltip_position = "left"
+    text = "Message",
+    position = "left"
   ),
   add_tooltip(
     tag = actionButton("tooltip", "right"),
-    tooltip_msg = "Message",
-    tooltip_position = "right"
+    text = "Message",
+    position = "right"
   ),
   h4("Color"),
   lapply(color1,
          function(j) {
            add_tooltip(
              tag = actionButton("tooltip", j),
-             tooltip_msg = "message",
-             tooltip_color = j,
-             tooltip_position = "top"
+             text = "message",
+             color = j,
+             position = "top"
            )
          }),
   h4("Trigger"),
-  add_popover(
+  add_tooltip(
     tag = actionButton("tooltip", "hover"),
-    popover_msg = "message",
-    popover_title = "prout"
+    text = "message"
   ),
   add_tooltip(
     tag = actionButton("tooltip", "focus"),
-    tooltip_msg = "message",
-    tooltip_trigger = "focus"
+    text = icon("user"),
+    trigger = "focus"
   ),
   add_tooltip(tag = actionButton("tooltip", "both"),
-              tooltip_msg = "message"),
+              text = "message"),
   h4("HTML message"),
   add_tooltip(
     tag = actionButton("tooltip", "HTML"),
-    tooltip_color = "primary",
-    tooltip_msg = tagList(tags$b("HTML", class = "text-success"), div("message"))
+    color = "primary",
+    text = tagList(tags$b("HTML", class = "text-success"), div("message"))
   )
 )
 

@@ -1,10 +1,10 @@
 #' Add a tooltip for a specific element
 #'
 #' @param tag Element on which a tooltip will be added
-#' @param tooltip_position Tooltip position (top, bottom, left or right)
-#' @param tooltip_trigger Trigger of the tooltip (hover, focus or both)
-#' @param tooltip_msg Tooltip message
-#' @param tooltip_color Tooltip color (black and white exclude)
+#' @param position Tooltip position (top, bottom, left or right)
+#' @param trigger Trigger of the tooltip (hover, focus or both)
+#' @param text Tooltip message
+#' @param color Tooltip color (black and white exclude)
 #' @import htmltools
 #' @import shiny
 #' @return A tooltip for a specific element
@@ -13,12 +13,11 @@
 #' @examples
 
 add_tooltip <- function(tag = NULL,
-                        tooltip_position = "top",
-                        tooltip_trigger = "hover focus",
-                        tooltip_msg = NULL,
-                        tooltip_color = "default") {
-  
-  
+                        position = "top",
+                        trigger = "hover focus",
+                        text = NULL,
+                        color = "default") {
+  # dependencies
   tooltip_dep <- htmltools::htmlDependency(
     name = "tooltip",
     version = "1.0.0",
@@ -31,36 +30,40 @@ add_tooltip <- function(tag = NULL,
   if (is.null(tag) == TRUE) {
     stop("tag must not be NULL")
   }
-  # tooltip_position
-  if (tooltip_position %ni% c("top", "bottom", "left", "right")) {
-    stop("popover_position must be in top, bottom, left, or right")
+  # position
+  if (position %ni% c("top", "bottom", "left", "right")) {
+    stop("tooltip position must be in top, bottom, left, or right")
   }
-  # tooltip_trigger
-  if (tooltip_trigger %ni% c("hover", "focus", "hover focus", "focus hover")) {
-    stop("popover_trigger must be hover, focus or hover focus")
+  # trigger
+  if (trigger %ni% c("hover", "focus", "hover focus", "focus hover")) {
+    stop("tooltip trigger must be hover, focus or hover focus")
   }
-  # tooltip_msg
-  if (is.null(tooltip_msg) == TRUE) {
-    stop("popover_msg must not be NULL")
+  # text
+  if (is.null(text) == TRUE) {
+    stop("tooltip text must not be NULL")
   }
-  # tooltip_color
-  test_bs_color(tooltip_color, transparent = FALSE, default = TRUE, bw = FALSE,label = "tooltip_color")
+  # color
+  test_bs_color(
+    color,
+    transparent = FALSE,
+    default = TRUE,
+    bw = FALSE,
+    label = "tooltip color"
+  )
   # class definition
-  class_tooltip <- paste0("popover")
-  class_arrow <- paste0("popover-arrow popover-arrow-",tooltip_color)
-  class_inner <- paste0("tooltip-inner ","tooltip-inner-",tooltip_color)
+  class_arrow <- paste0("popover-arrow popover-arrow-", color)
+  class_inner <- paste0("tooltip-inner ", "tooltip-inner-", color)
   # template definition
   template_tooltip <- shiny::div(
-    class = class_tooltip,
+    class = "popover",
     role = "tooltip",
     shiny::div(class = class_arrow),
-    shiny::div(class = class_inner, tooltip_msg)
+    shiny::div(class = class_inner, text)
   )
   # tooltip definition
-  tooltip <- htmltools::tagQuery(tag)$
-    addAttrs("data-bs-toggle" = "popover")$
-    addAttrs('data-bs-placement' = tooltip_position)$
-    addAttrs('data-bs-trigger' = tooltip_trigger)$
+  tooltip <- htmltools::tagQuery(tag)$addAttrs("data-bs-toggle" = "popover")$
+    addAttrs('data-bs-placement' = position)$
+    addAttrs('data-bs-trigger' = trigger)$
     addAttrs('role' = "button")$
     addAttrs('tabindex' = "0")$
     addAttrs("data-bs-content" = " ")$

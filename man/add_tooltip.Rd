@@ -6,22 +6,22 @@
 \usage{
 add_tooltip(
   tag = NULL,
-  tooltip_position = "top",
-  tooltip_trigger = "hover focus",
-  tooltip_msg = NULL,
-  tooltip_color = "default"
+  position = "top",
+  trigger = "hover focus",
+  text = NULL,
+  color = "default"
 )
 }
 \arguments{
 \item{tag}{Element on which a tooltip will be added}
 
-\item{tooltip_position}{Tooltip position (top, bottom, left or right)}
+\item{position}{Tooltip position (top, bottom, left or right)}
 
-\item{tooltip_trigger}{Trigger of the tooltip (hover, focus or both)}
+\item{trigger}{Trigger of the tooltip (hover, focus or both)}
 
-\item{tooltip_msg}{Tooltip message}
+\item{text}{Tooltip message}
 
-\item{tooltip_color}{Tooltip color (black and white exclude)}
+\item{color}{Tooltip color (black and white exclude)}
 }
 \value{
 A tooltip for a specific element
