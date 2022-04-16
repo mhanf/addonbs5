@@ -13,17 +13,17 @@
 #' @examples
 #' # Simple example
 #' add_tooltip(
-#' tag = actionButton("btn_id","tooltip),
+#' tag = shiny::actionButton("btn_id","tooltip"),
 #' position = "top",
-#' trigger = "hiver focus",
+#' trigger = "hover focus",
 #' text = "Tooltip message",
 #' color = "primary"
 #' )
 #' # Advanced example
 #' add_tooltip(
-#' tag = actionButton("btn_id","tooltip),
+#' tag = shiny::actionButton("btn_id","tooltip"),
 #' position = "top",
-#' trigger = "hiver focus",
+#' trigger = "hover focus",
 #' text = icon("github"),
 #' color = "light"
 #' )
@@ -66,8 +66,6 @@ add_tooltip <- function(tag = NULL,
     bw = TRUE,
     label = "tooltip color"
   )
-  
-  
   # class definition
   text_color <- "white"
   if (color == "light" | color == "white"){text_color = "black"}

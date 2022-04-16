@@ -32,17 +32,17 @@ Add a tooltip for a specific element
 \examples{
 # Simple example
 add_tooltip(
-tag = actionButton("btn_id","tooltip),
+tag = shiny::actionButton("btn_id","tooltip"),
 position = "top",
-trigger = "hiver focus",
+trigger = "hover focus",
 text = "Tooltip message",
 color = "primary"
 )
 # Advanced example
 add_tooltip(
-tag = actionButton("btn_id","tooltip),
+tag = shiny::actionButton("btn_id","tooltip"),
 position = "top",
-trigger = "hiver focus",
+trigger = "hover focus",
 text = icon("github"),
 color = "light"
 )
