@@ -20,11 +20,11 @@ color <-
     "warning",
     "danger")
 color1 <- c("default", color)
-color2 <- c(color1, "black", "white")
+color2 <- c(color, "black", "white")
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  theme = bslib::bs_theme(version = 5, bootswatch = "flatly"),
+  theme = bslib::bs_theme(version = 5, bootswatch = "darkly"),
   br(),
   
   HTML(' <div class="container mt-5">
@@ -188,7 +188,7 @@ ui <- fluidPage(
     position = "right"
   ),
   h4("Color"),
-  lapply(color1,
+  lapply(color2,
          function(j) {
            add_tooltip(
              tag = actionButton("tooltip", j),

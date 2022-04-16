@@ -9,7 +9,7 @@ add_tooltip(
   position = "top",
   trigger = "hover focus",
   text = NULL,
-  color = "default"
+  color = "black"
 )
 }
 \arguments{
@@ -28,4 +28,22 @@ A tooltip for a specific element
 }
 \description{
 Add a tooltip for a specific element
+}
+\examples{
+# Simple example
+add_tooltip(
+tag = actionButton("btn_id","tooltip),
+position = "top",
+trigger = "hiver focus",
+text = "Tooltip message",
+color = "primary"
+)
+# Advanced example
+add_tooltip(
+tag = actionButton("btn_id","tooltip),
+position = "top",
+trigger = "hiver focus",
+text = icon("github"),
+color = "light"
+)
 }

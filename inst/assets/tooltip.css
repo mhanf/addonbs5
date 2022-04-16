@@ -3,8 +3,12 @@
    border: 0 !important;
 }
 
-.tooltip-inner-default{
-    bs-bg: black !important;
+.tooltip-inner-black{
+    background-color: black !important;
+}
+
+.tooltip-inner-white{
+     background-color: white !important;
 }
 
 .tooltip-inner-primary{
@@ -175,23 +179,38 @@
     border-top-color: var(--bs-light) !important;
 }
 
-/*default*/
-.popover.bs-popover-end .popover-arrow-default::before, .popover.bs-popover-end .popover-arrow-default::after{
+/*black*/
+.popover.bs-popover-end .popover-arrow-black::before, .popover.bs-popover-end .popover-arrow-black::after{
     border-right-color: black !important;
 }
 
-.popover.bs-popover-start .popover-arrow-default::before,.popover.bs-popover-start .popover-arrow-default::after{
+.popover.bs-popover-start .popover-arrow-black::before,.popover.bs-popover-start .popover-arrow-black::after{
     border-left-color: black !important;
 }
 
-.popover.bs-popover-bottom .popover-arrow-default::before, .popover.bs-popover-bottom .popover-arrow-default::after{
+.popover.bs-popover-bottom .popover-arrow-black::before, .popover.bs-popover-bottom .popover-arrow-black::after{
     border-bottom-color: black !important;
 }
 
-.popover.bs-popover-top .popover-arrow-default::before, .popover.bs-popover-top .popover-arrow-default::after{
+.popover.bs-popover-top .popover-arrow-black::before, .popover.bs-popover-top .popover-arrow-black::after{
     border-top-color: black !important;
 }
 
+/*white*/
+.popover.bs-popover-end .popover-arrow-white::before, .popover.bs-popover-end .popover-arrow-white::after{
+    border-right-color: white !important;
+}
 
+.popover.bs-popover-start .popover-arrow-white::before,.popover.bs-popover-start .popover-arrow-white::after{
+    border-left-color: white !important;
+}
+
+.popover.bs-popover-bottom .popover-arrow-white::before, .popover.bs-popover-bottom .popover-arrow-white::after{
+    border-bottom-color: white !important;
+}
+
+.popover.bs-popover-top .popover-arrow-white::before, .popover.bs-popover-top .popover-arrow-white::after{
+    border-top-color: white !important;
+}
 
 
