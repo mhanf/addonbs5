@@ -24,7 +24,7 @@
 #' tag = shiny::actionButton("btn_id","tooltip"),
 #' position = "top",
 #' trigger = "hover focus",
-#' text = shiny::icon("github"),
+#' text = shiny::icon("github",class="m-1"),
 #' color = "light"
 #' )
 
