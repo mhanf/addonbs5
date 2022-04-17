@@ -43,7 +43,7 @@ add_tooltip(
 tag = shiny::actionButton("btn_id","tooltip"),
 position = "top",
 trigger = "hover focus",
-text = shiny::icon("github"),
-color = "light"
+text = shiny::icon("github",class="m-1"),
+color = "dark"
 )
 }

@@ -9,7 +9,7 @@
 
 library(shiny)
 library(addonbs5)
-
+library(fontawesome)
 color <-
   c("primary",
     "secondary",
@@ -24,9 +24,8 @@ color2 <- c(color, "black", "white")
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  theme = bslib::bs_theme(version = 5, bootswatch = "darkly"),
+  theme = bslib::bs_theme(version = 5, bootswatch = "flatly"),
   br(),
-  
   HTML(' <div class="container mt-5">
 
       <!-- button to initialize toast -->
@@ -64,107 +63,107 @@ ui <- fluidPage(
   lapply(color2,
          function(j) {
            add_badge(
-             badge_color = j,
-             badge_text = j,
-             badge_class = NULL,
-             badge_pill = FALSE
+             color = j,
+             text = j,
+             class = NULL,
+             pill = FALSE
            )
          }),
   h4('Pill badges'),
   lapply(color2,
          function(j) {
            add_badge(
-             badge_color = j,
-             badge_text = j,
-             badge_class = NULL,
-             badge_pill = TRUE
+             color = j,
+             text = j,
+             class = NULL,
+             pill = TRUE
            )
          }),
   h4('Personnalized badges'),
   lapply(color1,
          function(j) {
            add_badge(
-             badge_color = "transparent",
-             badge_text = j,
-             badge_class = paste0("border border-", j, " text-", j),
-             badge_pill = TRUE
+             color = "transparent",
+             text = j,
+             class = paste0("border border-", j, " text-", j),
+             pill = TRUE
            )
          }),
-  h3('Buttons'),
-  h4('Circular buttons'),
-  lapply(color1,
-         function(j) {
-           actionButton_circle(
-             inputId = "ok",
-             icon = shiny::icon("tree"),
-             class=paste0("btn-",j)
-           )
-         }),
-  h4('Personalized circular buttons'),
-  lapply(color1,
-         function(j) {
-           actionButton_circle(
-             inputId = "ok",
-             icon = shiny::icon("cog"),
-             class=paste0("btn-outline-",j)
-           )
-         }),
-  h4('Badged button 1'),
-  lapply(color2,
-         function(j) {
-           actionButton_badge(
-             label = j,
-             inputId = "j",
-             badge_text = "4+",
-             badge_color = j,
-             corner = FALSE,
-             badge_pill = TRUE
-           )
-         }),
-  h4('Badged button 2'),
-  lapply(color2,
-         function(j) {
-           actionButton_badge(
-             label = j,
-             inputId = "j",
-             badge_text = "4+",
-             badge_color = j,
-             class = "me-3",
-             corner = TRUE,
-             badge_pill = TRUE
-           )
-         }),
-  h3('Off canvas'),
-  # action button to trigger oc
-  actionButton_oc(
-    inputId = "ok",
-    label = "Off canvas button",
-    id_oc = "id_oc",
-    class = "btn-primary"
-  ),
-  # action link to trigger oc
-  actionLink_oc(
-    inputId = "ok",
-    label = "Off canvas link",
-    id_oc = "id_oc",
-    class = "text-primary"
-  ),
-  br(),
-  # oc definition
-  add_oc(
-    id = "id_oc",
-    header = TRUE,
-    title = "Title !",
-    body = "Body !",
-    position = "end",
-    class_header = "bg-primary",
-    class_body = "bg-light",
-    class_btn = "btn-success",
-    class_oc = "border border-primary",
-    scroll = TRUE,
-    backdrop = TRUE,
-    close_btn = TRUE
-  ),
+  # h3('Buttons'),
+  # h4('Circular buttons'),
+  # lapply(color1,
+  #        function(j) {
+  #          actionButton_circle(
+  #            inputId = "ok",
+  #            icon = shiny::icon("tree"),
+  #            class=paste0("btn-",j)
+  #          )
+  #        }),
+  # h4('Personalized circular buttons'),
+  # lapply(color1,
+  #        function(j) {
+  #          actionButton_circle(
+  #            inputId = "ok",
+  #            icon = shiny::icon("cog"),
+  #            class=paste0("btn-outline-",j)
+  #          )
+  #        }),
+  # h4('Badged button 1'),
+  # lapply(color2,
+  #        function(j) {
+  #          actionButton_badge(
+  #            label = j,
+  #            inputId = "j",
+  #            text = "4+",
+  #            color = j,
+  #            corner = FALSE,
+  #            pill = TRUE
+  #          )
+  #        }),
+  # h4('Badged button 2'),
+  # lapply(color2,
+  #        function(j) {
+  #          actionButton_badge(
+  #            label = j,
+  #            inputId = "j",
+  #            text = "4+",
+  #            color = j,
+  #            class = "me-3",
+  #            corner = TRUE,
+  #            pill = TRUE
+  #          )
+  #        }),
+  # h3('Off canvas'),
+  # # action button to trigger oc
+  # actionButton_oc(
+  #   inputId = "ok",
+  #   label = "Off canvas button",
+  #   id_oc = "id_oc",
+  #   class = "btn-primary"
+  # ),
+  # # action link to trigger oc
+  # actionLink_oc(
+  #   inputId = "ok",
+  #   label = "Off canvas link",
+  #   id_oc = "id_oc",
+  #   class = "text-primary"
+  # ),
+  # br(),
+  # # oc definition
+  # add_oc(
+  #   id = "id_oc",
+  #   header = TRUE,
+  #   title = "Title !",
+  #   body = "Body !",
+  #   position = "end",
+  #   class_header = "bg-primary",
+  #   class_body = "bg-light",
+  #   class_btn = "btn-success",
+  #   class_oc = "border border-primary",
+  #   scroll = TRUE,
+  #   backdrop = TRUE,
+  #   close_btn = TRUE
+  # ),
   h3("Tooltip"),
   h4("Position"),
   add_tooltip(
@@ -204,16 +203,20 @@ ui <- fluidPage(
   ),
   add_tooltip(
     tag = actionButton("tooltip", "focus"),
-    text = icon("user"),
+    text = shiny::icon("user"),
+    color = "primary",
     trigger = "focus"
   ),
-  add_tooltip(tag = actionButton("tooltip", "both"),
+  add_tooltip(tag = actionButton("tooltip", "both"),color="primary",
               text = "message"),
   h4("HTML message"),
   add_tooltip(
-    tag = actionButton("tooltip", "HTML"),
+    tag = actionButton("test", "HTML"),
     color = "primary",
-    text = tagList(tags$b("HTML", class = "text-success"), div("message"))
+    text = tagList(tags$b("HTML", 
+                          class = "text-success"), 
+                   div("message")
+                   )
   )
 )
 

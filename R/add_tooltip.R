@@ -25,7 +25,7 @@
 #' position = "top",
 #' trigger = "hover focus",
 #' text = shiny::icon("github",class="m-1"),
-#' color = "light"
+#' color = "dark"
 #' )
 
 add_tooltip <- function(tag = NULL,
@@ -33,7 +33,12 @@ add_tooltip <- function(tag = NULL,
                         trigger = "hover focus",
                         text = NULL,
                         color = "black") {
-  # dependencies
+  
+  # dependencies from text
+  text_dep <- htmlDependencies(text)
+  # denpendencies from tag
+  tag_dep <- htmlDependencies(tag)
+  # dependencies tooltip
   tooltip_dep <- htmltools::htmlDependency(
     name = "tooltip",
     version = "0.0.1",
@@ -59,13 +64,9 @@ add_tooltip <- function(tag = NULL,
     stop("tooltip text must not be NULL")
   }
   # test color
-  test_bs_color(
-    color,
-    transparent = FALSE,
-    default = FALSE,
-    bw = TRUE,
-    label = "tooltip color"
-  )
+  if (test_bs_color(color, bw = TRUE) == FALSE){
+    stop("tooltip color must be primary, secondary, dark, light, info, danger, warning, success, black or white")
+  }
   # class definition
   text_color <- "white"
   if (color == "light" | color == "white"){text_color = "black"}
@@ -86,7 +87,9 @@ add_tooltip <- function(tag = NULL,
     addAttrs('tabindex' = "0")$
     addAttrs("data-bs-content" = " ")$
     addAttrs("data-bs-template" = template_tooltip)$allTags()
-  # attach dependency
+  # attach dependencies
+  tooltip <- tagList(text_dep, tooltip)
+  tooltip <- tagList(tag_dep, tooltip)
   tooltip <- tagList(tooltip_dep, tooltip)
   # return
   return(tooltip)

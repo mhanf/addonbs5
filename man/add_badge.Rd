@@ -4,21 +4,16 @@
 \alias{add_badge}
 \title{Create a BS5 badge}
 \usage{
-add_badge(
-  badge_color = "default",
-  badge_text = NULL,
-  badge_class = NULL,
-  badge_pill = FALSE
-)
+add_badge(color = "default", text = NULL, class = NULL, pill = FALSE)
 }
 \arguments{
-\item{badge_color}{Badge color}
+\item{color}{Badge color}
 
-\item{badge_text}{Badge text}
+\item{text}{Badge text}
 
-\item{badge_class}{Badge additional class}
+\item{class}{Badge additional class}
 
-\item{badge_pill}{pill badge ? (TRUE or FALSE)}
+\item{pill}{pill badge ? (TRUE or FALSE)}
 }
 \value{
 a BS5 badge
@@ -28,8 +23,8 @@ Create a BS5 badge
 }
 \examples{
 add_badge(
-badge_color ="transparent",
-badge_text = "25+",
-badge_class = "border border-danger text-danger",
-badge_pill = TRUE)
+color ="transparent",
+text = "25+",
+class = "border border-danger text-danger",
+pill = TRUE)
 }
